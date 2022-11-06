@@ -4,29 +4,25 @@
 import codecs, sys 
 sys.stdout = codecs.getwriter('utf8')(sys.stdout.buffer)
 import cgi
+import cart as ca
 #連線DB
 from dbConfig import conn, cur
-import catalogue as cat
 #先印出http 表頭
 print("Content-Type: text/html; charset=utf-8\n")
-#連續3個"""表多行字串
 print("""
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>商品目錄</title>
+<title>購物車結帳</title>
 </head>
-
 <body>
-商品目錄 
-<a href='seecart.py'> 查看購物車 </a><hr>
-
- 
 """)
-proList=cat.getList()
-for (id,product,nums) in proList:
-	print(f"""<p>編號{id}: 商品:{product} 數量:{nums} <a href='addcart.html'>新增購物車</a> </p>""")
-print("<hr></body></html>")
 
 
+if ca.checkoutcart():
+    print("已結帳")
+else:
+    print("結帳失敗")
+print("<br><a href='listproduct.py'>回商品目錄</a>")
+print("</body></html>")

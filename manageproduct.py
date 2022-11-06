@@ -15,18 +15,19 @@ print("""
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>商品目錄</title>
+<title>商品列表</title>
 </head>
 
 <body>
-商品目錄 
-<a href='seecart.py'> 查看購物車 </a><hr>
+商品列表 
+<a href='addproduct.html'> 新增商品 </a><hr>
 
  
 """)
 proList=cat.getList()
+if 1 in proList[0]:
+    print(f"<p>{proList}</p>")
 for (id,product,nums) in proList:
-	print(f"""<p>編號{id}: 商品:{product} 數量:{nums} <a href='addcart.html'>新增購物車</a> </p>""")
+	print(f"""<p>編號{id}: 商品:{product} 數量:{nums} <a href='addProductNums.html'>補貨增加</a> </p>""")
+print("""<form method="delProduct" action="delectProduct.py"> 輸入想刪除商品編號<input type="text" name='id'><input type="submit">""")
 print("<hr></body></html>")
-
-
