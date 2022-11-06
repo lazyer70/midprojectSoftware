@@ -28,5 +28,5 @@ if ca.addCart(id,nums):
 else:
     print("新增失敗")
 print("<br><a href='listproduct.py'>回商品目錄</a>")
-print("<br><a href='seecart.py'>觀看購物車</a>")
+print("<br><a href='seecart.py'>查看購物車</a>")
 print("</body></html>")

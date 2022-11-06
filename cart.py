@@ -18,6 +18,12 @@ def delCartProduct(id):
 
 def addCart(id,nums):
     cartList=ListCart()
+    maxid="SELECT MAX(id) FROM catalogue;;"
+    cur.execute(maxid)
+    maxid=cur.fetchall()
+    maxID=maxid[0][0]#從sql提取的資料會轉成list因此得提出來
+    if id>(maxID):
+        return False
     for i in range(len(cartList)):
         if id == cartList[i][0]:
             sql="update cart set nums=nums+%d where id=%d;"%(nums,id)
@@ -34,4 +40,18 @@ def addCart(id,nums):
         cur.execute(sql)
         conn.commit()
         return True
-    
+def checkoutcart():
+    cartL=ListCart()
+    for i in range(len(cartL)):
+        print(i)
+        for j in range(len(ProductList)):
+            if cartL[i][0]==ProductList[j][0]:
+                id=cartL[i][0]
+                cartNums=cartL[i][2]
+                sql="update catalogue set nums=nums-%d where id=%d;"%(cartNums,id)
+                cur.execute(sql)
+                conn.commit()
+                sql="delete from cart where id=%d;"%(id)
+                cur.execute(sql)
+                conn.commit()#寫入
+    return True

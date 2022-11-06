@@ -28,5 +28,6 @@ print("""
 cartList=cart.ListCart()
 for (id,product,nums) in cartList:
 	print(f"""<p>編號{id}: 商品:{product} 數量:{nums} </p>""")
-print("""<form method="add" action="delectCart.py"> 輸入想刪除商品編號<input type="text" name='id'><input type="submit">""")
+print("""<form method="delCart" action="delectCart.py"> 輸入想刪除商品編號<input type="text" name='id'><input type="submit">""")
+print("""<p><a href="checkout.py">結帳</a></p>""")
 print("<hr></body></html>")
