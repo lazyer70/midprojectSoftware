@@ -27,3 +27,9 @@ def addProduct(product,nums):
     cur.execute(sql,(product,nums))
     conn.commit()
     return True
+def reviseProduct(id,name,Nums):
+    if Nums>0:
+        sql="update catalogue set nums=%d , product='%s' where id=%s;"%(Nums,name,id)
+    cur.execute(sql)
+    conn.commit()
+    return True
