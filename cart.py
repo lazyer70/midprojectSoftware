@@ -23,23 +23,23 @@ def addCart(id,nums):
     maxid=cur.fetchall()
     maxID=maxid[0][0]#從sql提取的資料會轉成list因此得提出來
     if id>(maxID):
+        print(f"<p>{maxID}</p>")
         return False
     for i in range(len(cartList)):
         if id == cartList[i][0]:
             sql="update cart set nums=nums+%d where id=%d;"%(nums,id)
             cur.execute(sql)
             conn.commit()
-        return True
-    else:
-        for i in range(len((ProductList))):
-            if id == ProductList[i][0]:
-                product=ProductList[i][1]
-            else:
-                continue
+            return True
+    for j in range(len((ProductList))):
+        if id == ProductList[j][0]:
+            product=ProductList[j][1]
+        else:
+            continue
         sql="insert into cart (id,product,nums) values (%d,'%s',%d);"%(id,product,nums)
         cur.execute(sql)
         conn.commit()
-        return True
+    return True
 def checkoutcart():
     cartL=ListCart()
     for i in range(len(cartL)):
