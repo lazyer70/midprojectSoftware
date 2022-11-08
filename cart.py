@@ -43,7 +43,6 @@ def addCart(id,nums):
 def checkoutcart():
     cartL=ListCart()
     for i in range(len(cartL)):
-        print(i)
         for j in range(len(ProductList)):
             if cartL[i][0]==ProductList[j][0]:
                 id=cartL[i][0]
