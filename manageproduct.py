@@ -25,8 +25,8 @@ print("""
  
 """)
 proList=cat.getList()
-for (id,product,nums) in proList:
-	print(f"""<p>編號{id}: 商品:{product} 數量:{nums} <a href='addProductNums.html'>補貨增加</a> </p>""")
+for (id,product,nums,price) in proList:
+	print(f"""<p>編號{id}: 商品:{product} 數量:{nums} 價格:{price}<a href='addProductNums.html'>補貨增加</a> </p>""")
 print("""<form method="delProduct" action="delectProduct.py"> 輸入想刪除商品編號<input type="text" name='id'><input type="submit">""")
 print("<hr><a href='reviseproduct.html'> 修改商品細節 </a>")
 print("<hr></body></html>")

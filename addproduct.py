@@ -23,7 +23,8 @@ print("""
 form = cgi.FieldStorage()
 nums=int(form.getvalue('amount'))
 name=form.getvalue('Pname')
-if ca.addProduct(name,nums):
+price=int(form.getvalue('price'))
+if ca.addProduct(name,nums,price):
     print("已新增")
 else:
     print("新增失敗")

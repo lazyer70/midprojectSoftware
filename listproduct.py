@@ -25,8 +25,8 @@ print("""
  
 """)
 proList=cat.getList()
-for (id,product,nums) in proList:
-	print(f"""<p>編號{id}: 商品:{product} 數量:{nums} <a href='addcart.html'>新增購物車</a> </p>""")
+for (id,product,nums,price) in proList:
+	print(f"""<p>編號{id}: 商品:{product} 數量:{nums} 價格:{price}<a href='addcart.html'>新增購物車</a> </p>""")
 print("<hr></body></html>")
 
 

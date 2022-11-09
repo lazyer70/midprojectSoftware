@@ -5,7 +5,7 @@ import catalogue as cat
 ProductList=cat.getList()
 def ListCart():
     #查詢
-    sql="select id,product,nums from cart order by id ;"
+    sql="select id,product,nums,price from cart order by id ;"
     cur.execute(sql)
     records = cur.fetchall()
     return records
@@ -34,9 +34,10 @@ def addCart(id,nums):
     for j in range(len((ProductList))):
         if id == ProductList[j][0]:
             product=ProductList[j][1]
+            price=ProductList[j][3]
         else:
             continue
-        sql="insert into cart (id,product,nums) values (%d,'%s',%d);"%(id,product,nums)
+        sql="insert into cart (id,product,nums,price) values (%d,'%s',%d,%d);"%(id,product,nums,price)
         cur.execute(sql)
         conn.commit()
     return True
@@ -54,3 +55,9 @@ def checkoutcart():
                 cur.execute(sql)
                 conn.commit()#寫入
     return True
+def cacaluatecart():
+    cartList=ListCart()
+    totalprice=int(0)
+    for i in range(len(cartList)):
+        totalprice=int(cartList[i][2])*int(cartList[i][3])+totalprice
+    return totalprice

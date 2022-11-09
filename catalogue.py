@@ -3,7 +3,7 @@ from itertools import product
 from dbConfig import conn, cur
 def getList():
     #查詢
-    sql="select id,product,nums from catalogue order by id ;"
+    sql="select id,product,nums,price from catalogue order by id ;"
     cur.execute(sql)
     records = cur.fetchall()
     return records
@@ -22,14 +22,14 @@ def addNums(id,Nums):
     conn.commit()
     return True
 
-def addProduct(product,nums):
-    sql="insert into catalogue (product,nums) values (%s,%s);"
-    cur.execute(sql,(product,nums))
+def addProduct(product,nums,price):
+    sql="insert into catalogue (product,nums,price) values (%s,%s,%s);"
+    cur.execute(sql,(product,nums,price))
     conn.commit()
     return True
-def reviseProduct(id,name,Nums):
+def reviseProduct(id,name,Nums,price):
     if Nums>0:
-        sql="update catalogue set nums=%d , product='%s' where id=%s;"%(Nums,name,id)
+        sql="update catalogue set nums=%d , product='%s',price='%d' where id=%s;"%(Nums,name,price,id)
     cur.execute(sql)
     conn.commit()
     return True

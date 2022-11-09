@@ -24,7 +24,8 @@ form = cgi.FieldStorage()
 nums=int(form.getvalue('amount'))
 name=form.getvalue('Pname')
 id=form.getvalue('Pid')
-if ca.reviseProduct(id,name,nums):
+price=int(form.getvalue('price'))
+if ca.reviseProduct(id,name,nums,price):
     print("已修改")
 else:
     print("修改失敗")
