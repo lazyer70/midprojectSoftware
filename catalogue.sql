@@ -30,18 +30,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `catalogue` (
   `id` int(11) NOT NULL,
   `product` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `nums` int(11) NOT NULL
+  `nums` int(11) NOT NULL,
+  `price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- 傾印資料表的資料 `catalogue`
 --
 
-INSERT INTO `catalogue` (`id`, `product`, `nums`) VALUES
-(1, '餅乾', 20),
-(2, '飲料', 5),
-(3, '衛生紙', 1),
-(4, '筆', 40);
+INSERT INTO `catalogue` (`id`, `product`, `nums`,`price`) VALUES
+(1, '餅乾', 20,40),
+(2, '飲料', 5,30),
+(3, '衛生紙', 10,70),
+(4, '筆', 40,20);
 
 --
 -- 已傾印資料表的索引
